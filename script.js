@@ -52,7 +52,11 @@ function calculateCalories(e) {
   if (isError) {
     return;
   }
-  let consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
+
+  const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
+  const remainingCalories = budgetCalories - consumedCalories + exerciseCalories;
+  const surplusOrDeficit = remainingCalories < 0 ? 'Surplus' : 'Deficit';
+  output.innerHTML = `<span class="${surplusOrDeficit.toLowerCase()}"></span>`;
 }
 
 function getCaloriesFromInputs(list) {
